@@ -1,6 +1,8 @@
 CREATE TABLE conversations(
-  user_name VARCHAR(200),
-  employer_name VARCHAR(250),
-  message TEXT,
+  id INT PRIMARY KEY AUTO_INCREMENT,  -- MySql
+  id SERIAL PRIMARY KEY, -- Postgres
+  user_id INT,
+  employer_id INT,
+  message TEXT NOT NULL,
   date_sent TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
