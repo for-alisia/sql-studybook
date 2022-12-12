@@ -46,9 +46,9 @@ CREATE TABLE projects (
 -- (we can't use an array of values as a column value)
 -- Intermediate table
 CREATE TABLE projects_employees (
-  id SERIAL PRIMARY KEY,
   employee_id INT REFERENCES employees ON DELETE CASCADE,
-  project_id INT REFERENCES projects ON DELETE CASCADE
+  project_id INT REFERENCES projects ON DELETE CASCADE,
+  PRIMARY KEY (employee_id, project_id) -- Composite primary key here - combination of 2 (or many) columns
 );
 
 -- INSERT DATA
