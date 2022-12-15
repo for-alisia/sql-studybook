@@ -17,3 +17,17 @@ SELECT SUM(amount_billed) FROM bookings;
 -- AVG - average ignores NULL values
 SELECT AVG(num_guests) FROM bookings;
 SELECT ROUND(AVG(num_guests), 2) FROM bookings; -- round the result to 3.80 form
+
+-- FILTER
+SELECT ROUND(AVG(amount_tipped), 2) FROM bookings
+WHERE amount_billed > 20 and num_guests > 2;
+
+-- JOINS
+SELECT MAX(num_guests), MAX(num_seats) FROM bookings AS bk
+INNER JOIN tables as tb ON bk.table_id = tb.id;
+
+-- FILTERS + JOIN
+SELECT MAX(num_guests), MAX(num_seats) FROM bookings AS bk
+INNER JOIN tables as tb ON bk.table_id = tb.id
+INNER JOIN payment_methods as pm ON pm.id = bk.payment_id
+WHERE tb.num_seats < 5 AND pm.name = 'Cash';
